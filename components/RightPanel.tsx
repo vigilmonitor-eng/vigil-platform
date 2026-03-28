@@ -249,7 +249,7 @@ function FeedTab({ news, loading, domain }: { news: NewsItem[]; loading: boolean
     <>
       <div style={{ padding: '6px 14px', background: 'var(--bg)', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontFamily: 'var(--font-jetbrains)', fontSize: 7.5, color: 'var(--ink4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          {domain !== 'all' ? `${DOMAIN_LABELS[domain] ?? 'Live'} Feed` : 'Live Intelligence Feed'}
+          {domain !== 'all' ? `${DOMAIN_LABELS[domain as keyof typeof DOMAIN_LABELS] ?? 'Live'} Feed` : 'Live Intelligence Feed'}
         </span>
         <span style={{ background: 'var(--border)', padding: '1px 7px', borderRadius: 8, fontFamily: 'var(--font-jetbrains)', fontSize: 8, color: 'var(--ink3)' }}>{display.length}</span>
       </div>
