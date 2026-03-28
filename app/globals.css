@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F8F5F0;
+  --bg2: #FFFFFF;
+  --bg3: #F1EDE6;
+  --ink: #1A1410;
+  --ink2: #3D2E20;
+  --ink3: #7A6550;
+  --ink4: #B5A590;
+  --border: #E5DDD5;
+  --border2: #CCC0B5;
+  --ocean: #D5E9F5;
+  --land: #EDE8E0;
+  --land-h: #E0D8CE;
+  --geo: #C62828;
+  --geo-bg: rgba(198, 40, 40, 0.08);
+  --fin: #0D47A1;
+  --fin-bg: rgba(13, 71, 161, 0.08);
+  --cyber: #00695C;
+  --cyber-bg: rgba(0, 105, 92, 0.08);
+  --clim: #6A1B9A;
+  --clim-bg: rgba(106, 27, 154, 0.08);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --font-outfit: 'Outfit', system-ui, sans-serif;
+  --font-jetbrains: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-outfit);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink4); }
+
+/* Smooth scrolling */
+* { scroll-behavior: smooth; }
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--cyber);
+  outline-offset: 2px;
+}
+
+/* Map SVG */
+.world-svg { width: 100%; height: 100%; display: block; }
+.land-path { fill: var(--land); transition: fill 0.15s ease; cursor: pointer; }
+.land-path:hover { fill: var(--land-h); }
+.border-path { fill: none; stroke: var(--border2); stroke-width: 0.5; }
+.graticule-path { fill: none; stroke: #C2D8E8; stroke-width: 0.25; }
+.sphere-path { fill: var(--ocean); }
+
+/* Incident marker animations - use r attribute animation not transform */
+@keyframes pulseRingR {
+  0% { r: var(--base-r, 8px); opacity: 0.55; }
+  100% { r: calc(var(--base-r, 8px) * 2.8); opacity: 0; }
+}
+.pulse-ring {
+  animation: none;
+}
+.pulse-ring-2 {
+  animation: none;
+}
+
+/* Popup transition */
+.popup-enter { opacity: 0; transform: translateY(10px) scale(0.96); }
+.popup-active { opacity: 1; transform: translateY(0) scale(1); transition: opacity 0.22s ease, transform 0.22s ease; }
+
+/* Panel tabs */
+.tab-underline {
+  position: relative;
+}
+.tab-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--geo);
+  border-radius: 1px;
+}
+
+/* Ticker */
+.ticker-inner {
+  animation: ticker 40s linear infinite;
+  white-space: nowrap;
+  display: flex;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-inner:hover { animation-play-state: paused; }
+
+/* Domain tag pills */
+.domain-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--font-jetbrains);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.domain-pill-geo { background: var(--geo-bg); color: var(--geo); }
+.domain-pill-fin { background: var(--fin-bg); color: var(--fin); }
+.domain-pill-cyber { background: var(--cyber-bg); color: var(--cyber); }
+.domain-pill-clim { background: var(--clim-bg); color: var(--clim); }
+
+/* Severity bars */
+.sev-bar-critical { background: #C62828; }
+.sev-bar-high { background: #C76B00; }
+.sev-bar-medium { background: #0D47A1; }
+.sev-bar-low { background: #00695C; }
+
+/* Smooth transitions for interactive elements */
+.hover-bg { transition: background-color 0.15s ease; }
+.hover-bg:hover { background-color: var(--bg3); }
+
+/* Risk bar fill animation */
+.risk-fill {
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--border) 50%, var(--bg3) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Glass effect for popups */
+.glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

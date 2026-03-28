@@ -1,0 +1,71 @@
+====================================================
+  VIGIL Platform — How To Use (Simple Version)
+====================================================
+
+YOU HAVE 4 FILES TO USE:
+
+  START_HERE_WINDOWS.bat    ← If you use Windows PC
+  START_HERE_MAC.command    ← If you use a Mac
+  DEPLOY_ONLINE_WINDOWS.bat ← Put it on the internet (Windows)
+  DEPLOY_ONLINE_MAC.command ← Put it on the internet (Mac)
+
+====================================================
+STEP 1 — Run it on YOUR computer first
+====================================================
+
+  WINDOWS:
+  → Double-click "START_HERE_WINDOWS.bat"
+  → If it asks about Node.js, it will open a website
+    for you. Download and install it, then
+    double-click the file again.
+  → Wait 1-2 minutes for setup
+  → Your browser will open automatically
+  → You will see the VIGIL platform!
+
+  MAC:
+  → Right-click "START_HERE_MAC.command"
+  → Click "Open" (you may need to click Open twice
+    the first time for Mac security)
+  → Same as above — wait, browser opens, done!
+
+  To STOP the platform: click the black window
+  and press Ctrl + C (Windows) or Cmd + C (Mac)
+
+====================================================
+STEP 2 — Put it on the internet (free)
+====================================================
+
+  WINDOWS:
+  → Double-click "DEPLOY_ONLINE_WINDOWS.bat"
+  → It will ask you to log in to Vercel
+    (sign up free with Google — takes 30 seconds)
+  → It will deploy automatically
+  → At the end, you get a URL like:
+    https://vigil-platform.vercel.app
+  → Share that URL with anyone — it works forever
+    for free!
+
+  MAC:
+  → Same but use "DEPLOY_ONLINE_MAC.command"
+
+====================================================
+WHAT IS EACH FILE IN THE FOLDER?
+====================================================
+
+  app/             → The main pages of the website
+  components/      → UI pieces (map, sidebar, etc.)
+  lib/             → Shared code and data types
+  package.json     → List of tools the app needs
+  .env.example     → Optional: add API keys here
+
+  You do NOT need to touch any of these files.
+  Everything works as-is.
+
+====================================================
+SOMETHING WENT WRONG?
+====================================================
+
+  Take a screenshot of the black window (Terminal)
+  and ask for help. Include the error text shown.
+
+====================================================
