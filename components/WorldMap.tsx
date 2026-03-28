@@ -65,10 +65,9 @@ export default function WorldMap({ incidents, disasters, activeFilters, onFilter
 
         const countries = topomod.feature(world, world.objects.countries)
 
+        // FINAL FIX
         const countryFeatures =
-          countries && 'features' in countries
-            ? (countries as GeoJSON.FeatureCollection).features
-            : []
+          (countries as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry>).features ?? []
 
         g.append('g')
           .selectAll('path')
